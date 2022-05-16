@@ -6,11 +6,17 @@
 #    By: rovillar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 19:17:05 by rovillar          #+#    #+#              #
-#    Updated: 2022/04/06 19:17:07 by rovillar         ###   ########.fr        #
+#    Updated: 2022/05/16 18:39:16 by rovillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FT_PRINTF = ft_printf/libftprintf.a
+
+PRINTF_PATH = ft_printf
+
+PRINTF = libftprintf.a
+
+NAME = so_long
 
 SRC =	main.c init_graphic.c check_map.c make_map.c draw_map.c update.c keyboard.c gameplay.c poss_move.c game_utils.c \
 		gnl/get_next_line.c gnl/get_next_line_utils.c \
@@ -18,29 +24,28 @@ SRC =	main.c init_graphic.c check_map.c make_map.c draw_map.c update.c keyboard.
 		 libft/ft_strlen.c libft/ft_substr.c \
 		ft_printf/ft_printf.c \
 
+OBJ =	${SCRS:.c=.o}
 
-OBJ =	main.o init_graphic.o check_map.o make_map.o map/draw_map.o update.o keyboard.c gameplay.o poss_move.o game_utils.o \
-		get_next_line.o get_next_line_utils.o \
- 		ft_bzero.o ft_calloc.o ft_memset.o ft_split.o ft_strdup.o ft_strjoin.o ft_strlen.o ft_substr.o \
-		ft_printf/ft_printf.o \
+CC = gcc
 
+CFLAGS = -Wall -Wextra -Werror
 
-HEADER = ./GNL/get_next_line.h so_long.h ./libft/libft.h ./map/map.h -I ./mlx/mlx.h
-
-
-NAME = so_long
-
+HEADER = ./GNL/get_next_line.h so_long.h ./libft/libft.h -I ./mlx/mlx.h
 
 all: $(NAME)
 
-$(NAME): $(SRC)
-	gcc -Wall -Werror -Wextra -L ./mlx -lmlx -O3 -framework OpenGL -framework Appkit $(SRC) $(FT_PRINTF) -o $(NAME)
+$(NAME): $(OBJ) $(PRINTF)
+	${CC} ${CFLAGS} -L ./mlx -lmlx -O3 -framework OpenGL -framework Appkit $(SRC) $(FT_PRINTF) -o $(NAME)
+
+$(PRINTF):
+	(cd $(PRINTF_PATH) && $(MAKE))
 
 clean:
-	rm -f $OBJ
+	rm -rf $(OBJ)
 	
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME)  $(PRINTF)
+	cd $(PRINTF_PATH) && $(MAKE) $@
 
 run:
 	./$(NAME) *.ber
