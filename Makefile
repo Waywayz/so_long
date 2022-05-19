@@ -20,8 +20,7 @@ NAME = so_long
 
 SRC =	main.c init_graphic.c check_map.c make_map.c draw_map.c update.c keyboard.c gameplay.c poss_move.c game_utils.c \
 		gnl/get_next_line.c gnl/get_next_line_utils.c \
- 		libft/ft_bzero.c libft/ft_calloc.c libft/ft_memset.c libft/ft_split.c libft/ft_strdup.c libft/ft_strjoin.c \
-		 libft/ft_strlen.c libft/ft_substr.c \
+ 		ft_printf/libft/ft_split.c ft_printf/libft/ft_strjoin.c ft_printf/libft/ft_strlen.c \
 		ft_printf/ft_printf.c \
 
 OBJ =	${SCRS:.c=.o}
@@ -30,7 +29,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-HEADER = ./GNL/get_next_line.h so_long.h ./libft/libft.h -I ./mlx/mlx.h
+HEADER = ./gnl/get_next_line.h so_long.h .ft_printf/libft/libft.h -I ./mlx/mlx.h
 
 all: $(NAME)
 
@@ -41,6 +40,7 @@ $(PRINTF):
 	(cd $(PRINTF_PATH) && $(MAKE))
 
 clean:
+	$(MAKE) clean -C ./ft_printf
 	rm -rf $(OBJ)
 	
 fclean: clean
