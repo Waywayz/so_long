@@ -6,13 +6,11 @@
 #    By: rovillar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 19:17:05 by rovillar          #+#    #+#              #
-#    Updated: 2022/05/16 18:39:16 by rovillar         ###   ########.fr        #
+#    Updated: 2022/05/25 16:58:13 by rovillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FT_PRINTF = ft_printf/libftprintf.a
-
-PRINTF_PATH = ft_printf
 
 PRINTF = libftprintf.a
 
@@ -29,23 +27,19 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-HEADER = ./gnl/get_next_line.h so_long.h .ft_printf/libft/libft.h -I ./mlx/mlx.h
-
 all: $(NAME)
 
-$(NAME): $(OBJ) $(PRINTF)
+$(NAME): $(OBJ)
+	$(MAKE) -C ./ft_printf
 	${CC} ${CFLAGS} -L ./mlx -lmlx -O3 -framework OpenGL -framework Appkit $(SRC) $(FT_PRINTF) -o $(NAME)
-
-$(PRINTF):
-	(cd $(PRINTF_PATH) && $(MAKE))
 
 clean:
 	$(MAKE) clean -C ./ft_printf
 	rm -rf $(OBJ)
 	
 fclean: clean
-	rm -f $(NAME)  $(PRINTF)
-	cd $(PRINTF_PATH) && $(MAKE) $@
+	$(MAKE) fclean -C ./ft_printf
+	rm -f $(NAME)
 
 run:
 	./$(NAME) *.ber

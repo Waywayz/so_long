@@ -6,7 +6,7 @@
 /*   By: rovillar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:12:07 by rovillar          #+#    #+#             */
-/*   Updated: 2022/04/06 19:16:06 by rovillar         ###   ########.fr       */
+/*   Updated: 2022/05/25 16:50:51 by rovillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "./gnl/get_next_line.h"
-# include "./libft/libft.h"
+# include "./ft_printf/libft/libft.h"
 # include "./mlx/mlx.h"
 # include <fcntl.h>
 
