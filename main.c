@@ -28,12 +28,26 @@ void	free_map(char **map)
 	free(map);
 }
 
+int	is_ber(char *av)
+{
+	int	len;
+
+	len = ft_strlen(av);
+	if (file == 0)
+		return (0);
+	if (len < 5)
+		return (0);
+	if (ft_strcmp(av + len - 4, ".ber") != 0)
+		return (0);
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	char	**map;
 	t_mlx	*mlx;
 
-	if (ac != 2)
+	if (ac != 2 || !is_ber(av[1]))
 	{
 		ft_printf("ERROR ARGUMENT\n");
 		return (0);

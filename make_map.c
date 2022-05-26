@@ -29,12 +29,6 @@ static void	check_map_rl(char *str)
 	}
 }
 
-void	error_fd(void)
-{
-	ft_printf("ERROR FD\n");
-	exit(1);
-}
-
 static char	*convert_map(char **map)
 {
 	int		fd;
@@ -44,10 +38,10 @@ static char	*convert_map(char **map)
 	fd = open(*map, O_RDONLY);
 	str = ft_strdup("");
 	if (fd < 0)
-		error_fd();
+		return (0);
 	line = get_next_line(fd);
 	if (!line)
-		error_fd();
+		return (0);
 	while (line)
 	{
 		str = ft_strjoin(str, line);
