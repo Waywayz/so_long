@@ -6,7 +6,7 @@
 /*   By: rovillar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:10:36 by rovillar          #+#    #+#             */
-/*   Updated: 2022/05/25 18:15:33 by rovillar         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:23:58 by rovillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int	is_ber(char *av)
 	int	len;
 
 	len = ft_strlen(av);
-	if (file == 0)
+	if (av == 0)
 		return (0);
 	if (len < 5)
 		return (0);
-	if (ft_strcmp(av + len - 4, ".ber") != 0)
+	if (ft_strncmp(av + len - 4, ".ber", len) != 0)
 		return (0);
 	return (1);
 }

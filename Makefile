@@ -6,7 +6,7 @@
 #    By: rovillar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 19:17:05 by rovillar          #+#    #+#              #
-#    Updated: 2022/05/25 18:14:13 by rovillar         ###   ########.fr        #
+#    Updated: 2022/05/30 16:14:22 by rovillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = so_long
 
 SRC =	main.c init_graphic.c check_map.c make_map.c draw_map.c update.c keyboard.c gameplay.c poss_move.c game_utils.c \
 		gnl/get_next_line.c gnl/get_next_line_utils.c \
- 		ft_printf/libft/ft_split.c ft_printf/libft/ft_strjoin.c ft_printf/libft/ft_strlen.c \
+ 		ft_printf/libft/ft_split.c ft_printf/libft/ft_strjoin.c ft_printf/libft/ft_strlen.c ft_printf/libft/ft_strncmp.c \
 		ft_printf/ft_printf.c \
 
 OBJ =	${SRC:.c=.o}
